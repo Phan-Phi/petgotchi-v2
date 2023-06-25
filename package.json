@@ -1,0 +1,45 @@
+{
+  "name": "petgotchi",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "prepare": "husky install",
+    "tb": "next dev --turbo",
+    "export": "next build && next export"
+  },
+  "dependencies": {
+    "@emotion/cache": "^11.10.5",
+    "@emotion/react": "^11.10.6",
+    "@emotion/server": "^11.10.0",
+    "@emotion/styled": "^11.10.6",
+    "@mui/material": "^5.11.15",
+    "@next/font": "13.1.6",
+    "@types/node": "18.13.0",
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.11",
+    "eslint": "8.34.0",
+    "eslint-config-next": "13.1.6",
+    "gsap": "^3.11.4",
+    "next": "13.1.6",
+    "next-seo": "^6.0.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-error-boundary": "^4.0.3",
+    "react-player": "^2.12.0",
+    "react-use": "^17.4.0",
+    "seethru": "^4.0.0",
+    "typescript": "4.9.5"
+  },
+  "devDependencies": {
+    "@types/video-react": "^0.15.1",
+    "@typescript-eslint/eslint-plugin": "^5.57.0",
+    "eslint-config-prettier": "^8.8.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
+    "prettier": "^2.8.7"
+  }
+}
