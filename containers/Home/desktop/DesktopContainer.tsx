@@ -4,7 +4,7 @@ import { Fade, styled } from "@mui/material";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { isTablet as isTablet2 } from "react-device-detect";
+import { isTablet as isTabletDevice } from "react-device-detect";
 
 import { Box } from "@/components";
 
@@ -136,6 +136,13 @@ const HomeDesktopContainer = () => {
   useEvent("scroll", onScrollHandler, containerRef.current);
 
   useEffect(() => {
+    if (isTabletDevice) {
+      document.body.style.overflow = "hidden";
+      window.scrollTo(0, 10000);
+    }
+  }, [isTabletDevice]);
+
+  useEffect(() => {
     const cb = (event: WheelEvent) => {
       const { deltaX } = event;
       const tween = tweenRef.current.tween;
@@ -209,45 +216,40 @@ const HomeDesktopContainer = () => {
     }, 3000);
   }, [isImgReady]);
 
-  useEffect(() => {
-    if (isTablet) {
-      document.body.style.overflow = "hidden";
-      window.scrollTo(0, 10000);
-    }
-  }, [isTablet]);
-
   return (
     <Box>
-      {/* <Loading /> */}
+      <Loading />
 
-      <ContentWrapper>
-        <NavigationWrapper className="navigation">
-          <NavigationBar />
-        </NavigationWrapper>
-        <Container id="content-container" ref={containerRef}>
-          <Section id="home-section" className="section">
-            <HomeSection onLoad={onSetImgReadyHandler(0)} />
-          </Section>
-          <Section id="about-section" className="section">
-            <AboutSection onLoad={onSetImgReadyHandler(1)} />
-          </Section>
+      <Fade in={!isLoading}>
+        <ContentWrapper>
+          <NavigationWrapper className="navigation">
+            <NavigationBar />
+          </NavigationWrapper>
+          <Container id="content-container" ref={containerRef}>
+            <Section id="home-section" className="section">
+              <HomeSection onLoad={onSetImgReadyHandler(0)} />
+            </Section>
+            <Section id="about-section" className="section">
+              <AboutSection onLoad={onSetImgReadyHandler(1)} />
+            </Section>
 
-          <Section id="vision-section" className="section" zIndex={2}>
-            <VisionSection onLoad={onSetImgReadyHandler(2)} />
-          </Section>
+            <Section id="vision-section" className="section" zIndex={2}>
+              <VisionSection onLoad={onSetImgReadyHandler(2)} />
+            </Section>
 
-          <Section id="feature-section" className="section">
-            <FeatureSection onLoad={onSetImgReadyHandler(3)} />
-          </Section>
+            <Section id="feature-section" className="section">
+              <FeatureSection onLoad={onSetImgReadyHandler(3)} />
+            </Section>
 
-          <Section id="founder-section" className="section">
-            <FounderSection onLoad={onSetImgReadyHandler(4)} />
-          </Section>
-        </Container>
-        <GuidelineWrapper ref={guidelineRef}>
-          <Guideline />
-        </GuidelineWrapper>
-      </ContentWrapper>
+            <Section id="founder-section" className="section">
+              <FounderSection onLoad={onSetImgReadyHandler(4)} />
+            </Section>
+          </Container>
+          <GuidelineWrapper ref={guidelineRef}>
+            <Guideline />
+          </GuidelineWrapper>
+        </ContentWrapper>
+      </Fade>
     </Box>
   );
 };
@@ -261,11 +263,8 @@ const Container = styled(Box)(({ theme }) => {
     overflow: "hidden",
     flexWrap: "nowrap",
     // maxHeight: "-webkit-fill-available",
-    // ...(isTablet2 && {
-    //   maxHeight: "-webkit-fill-available",
-    // }),
 
-    ...(isTablet2 ? null : { maxHeight: "-webkit-fill-available", overflow: "hidden" }),
+    ...(isTabletDevice ? null : { maxHeight: "-webkit-fill-available" }),
 
     [theme.breakpoints.between(768, 1200)]: {
       ["&::-webkit-scrollbar"]: {
@@ -286,10 +285,8 @@ const Section = styled(Box)(() => {
     position: "relative",
 
     // maxHeight: "-webkit-fill-available",
-    // ...(isTablet2 && {
-    //   maxHeight: "-webkit-fill-available",
-    // }),
-    ...(isTablet2 ? null : { maxHeight: "-webkit-fill-available" }),
+
+    ...(isTabletDevice ? null : { maxHeight: "-webkit-fill-available" }),
   };
 });
 
