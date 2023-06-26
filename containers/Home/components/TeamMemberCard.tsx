@@ -37,14 +37,17 @@ const StyledTitle = styled(Typography)(({ theme }) => {
   return {
     color: "primary.main",
     textAlign: "center",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "clamp(1rem, 1.85vh, 20px)",
-      lineHeight: "clamp(1rem, 2.22vh, 24px)",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "clamp(1rem, 1.48vh, 16px)",
-      lineHeight: "clamp(1rem, 2.22vh, 20px)",
-    },
+    marginTop: "0 !important",
+    fontSize: "clamp(1rem, 2.40vh,26px) !important",
+    lineHeight: "clamp(1rem, 2.96vh,32px) !important",
+    // [theme.breakpoints.down("md")]: {
+    //   fontSize: "clamp(1rem, 1.85vh, 20px)",
+    //   lineHeight: "clamp(1rem, 2.22vh, 24px)",
+    // },
+    // [theme.breakpoints.down("sm")]: {
+    //   fontSize: "clamp(1rem, 1.48vh, 16px)",
+    //   lineHeight: "clamp(1rem, 2.22vh, 20px)",
+    // },
   };
 });
 
