@@ -13,11 +13,12 @@ const StyledBox = styled(Box)(({ theme }) => {
     border: "1px solid #FFF",
     backdropFilter: "blur(5px)",
     borderRadius: 20,
-    padding: 20,
+    // padding: 20,
+    padding: "clamp(0px,1.85vh,20px)",
 
-    [theme.breakpoints.between("md", "lg")]: {
-      padding: "clamp(0px,1.85vh,20px)",
-    },
+    // [theme.breakpoints.between("md", "lg")]: {
+    //   padding: "clamp(0px,1.85vh,20px)",
+    // },
     [theme.breakpoints.down("md")]: {
       borderRadius: 16,
       padding: 16,

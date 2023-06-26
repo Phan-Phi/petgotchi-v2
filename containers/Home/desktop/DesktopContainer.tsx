@@ -1,9 +1,10 @@
 import { gsap } from "gsap";
-import { useEvent, useWindowSize } from "react-use";
+import { useEvent, useUpdateEffect, useWindowSize } from "react-use";
 import { Fade, styled } from "@mui/material";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { isTablet as isTablet2 } from "react-device-detect";
 
 import { Box } from "@/components";
 
@@ -208,40 +209,45 @@ const HomeDesktopContainer = () => {
     }, 3000);
   }, [isImgReady]);
 
+  useEffect(() => {
+    if (isTablet) {
+      document.body.style.overflow = "hidden";
+      window.scrollTo(0, 10000);
+    }
+  }, [isTablet]);
+
   return (
     <Box>
       {/* <Loading /> */}
 
-      <Fade in={!isLoading}>
-        <ContentWrapper>
-          <NavigationWrapper className="navigation">
-            <NavigationBar />
-          </NavigationWrapper>
-          <Container id="content-container" ref={containerRef}>
-            <Section id="home-section" className="section">
-              <HomeSection onLoad={onSetImgReadyHandler(0)} />
-            </Section>
-            <Section id="about-section" className="section">
-              <AboutSection onLoad={onSetImgReadyHandler(1)} />
-            </Section>
+      <ContentWrapper>
+        <NavigationWrapper className="navigation">
+          <NavigationBar />
+        </NavigationWrapper>
+        <Container id="content-container" ref={containerRef}>
+          <Section id="home-section" className="section">
+            <HomeSection onLoad={onSetImgReadyHandler(0)} />
+          </Section>
+          <Section id="about-section" className="section">
+            <AboutSection onLoad={onSetImgReadyHandler(1)} />
+          </Section>
 
-            <Section id="vision-section" className="section" zIndex={2}>
-              <VisionSection onLoad={onSetImgReadyHandler(2)} />
-            </Section>
+          <Section id="vision-section" className="section" zIndex={2}>
+            <VisionSection onLoad={onSetImgReadyHandler(2)} />
+          </Section>
 
-            <Section id="feature-section" className="section">
-              <FeatureSection onLoad={onSetImgReadyHandler(3)} />
-            </Section>
+          <Section id="feature-section" className="section">
+            <FeatureSection onLoad={onSetImgReadyHandler(3)} />
+          </Section>
 
-            <Section id="founder-section" className="section">
-              <FounderSection onLoad={onSetImgReadyHandler(4)} />
-            </Section>
-          </Container>
-          <GuidelineWrapper ref={guidelineRef}>
-            <Guideline />
-          </GuidelineWrapper>
-        </ContentWrapper>
-      </Fade>
+          <Section id="founder-section" className="section">
+            <FounderSection onLoad={onSetImgReadyHandler(4)} />
+          </Section>
+        </Container>
+        <GuidelineWrapper ref={guidelineRef}>
+          <Guideline />
+        </GuidelineWrapper>
+      </ContentWrapper>
     </Box>
   );
 };
@@ -254,7 +260,13 @@ const Container = styled(Box)(({ theme }) => {
     display: "flex",
     overflow: "hidden",
     flexWrap: "nowrap",
-    maxHeight: "-webkit-fill-available",
+    // maxHeight: "-webkit-fill-available",
+    // ...(isTablet2 && {
+    //   maxHeight: "-webkit-fill-available",
+    // }),
+
+    ...(isTablet2 ? null : { maxHeight: "-webkit-fill-available", overflow: "hidden" }),
+
     [theme.breakpoints.between(768, 1200)]: {
       ["&::-webkit-scrollbar"]: {
         display: "none",
@@ -262,6 +274,8 @@ const Container = styled(Box)(({ theme }) => {
       overflow: "scroll hidden",
       scrollbarWidth: "none",
       msOverflowStyle: "none",
+      overflowY: "hidden",
+      height: "100%",
     },
   };
 });
@@ -270,14 +284,19 @@ const Section = styled(Box)(() => {
   return {
     height: "100vh",
     position: "relative",
-    maxHeight: "-webkit-fill-available",
+
+    // maxHeight: "-webkit-fill-available",
+    // ...(isTablet2 && {
+    //   maxHeight: "-webkit-fill-available",
+    // }),
+    ...(isTablet2 ? null : { maxHeight: "-webkit-fill-available" }),
   };
 });
 
 const ContentWrapper = styled(Box)(() => {
   return {
     width: "100%",
-    height: "100%",
+    overflow: "hidden",
   };
 });
 

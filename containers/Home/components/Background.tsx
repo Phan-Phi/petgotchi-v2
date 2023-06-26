@@ -8,12 +8,16 @@ const Background = (props: React.ImgHTMLAttributes<HTMLImageElement>) => {
 
   return (
     <img
+      className="image"
       style={{
         objectFit: "cover",
         height: isMdDown ? "100%" : "100vh",
         pointerEvents: "none",
         userSelect: "none",
         width: isMdDown ? "100%" : undefined,
+        backgroundSize: "cover",
+        // backgroundPositionX: "",
+        // paddingBottom: "100px",
         ...style,
       }}
       alt={alt || ""}

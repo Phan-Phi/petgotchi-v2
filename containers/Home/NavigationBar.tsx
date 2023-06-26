@@ -62,13 +62,16 @@ const NavigationBar = () => {
       <img
         className="logo"
         src={"/petgotchi-logo.png"}
-        width={200}
-        height={90}
+        // width={200}
+        // height={90}
         style={{
           objectFit: "contain",
+          width: "clamp(0px,22.22vh,240px)",
+          height: "clamp(0px,7.77vh,84px)",
         }}
         alt="Petgotchi Logo"
       />
+
       <NavigationWrapper
         className="navigation-wrapper"
         divider={<Divider orientation="vertical" flexItem color="#FFF" />}

@@ -44,21 +44,27 @@ const FeatureSection = ({
 const FeatureWrapper = styled(Box)(() => {
   return {
     position: "absolute",
-    top: "18%",
-    left: "76%",
+    // top: "18%",
+    // left: "76%",
     right: "-6%",
     pointerEvents: "none",
     zIndex: 2,
+
+    top: "clamp(0px,18.24vh,197px)",
+    left: "clamp(0px,268.24vh,2897px)",
   };
 });
 
 const ContentWrapper = styled(Stack)(() => {
   return {
     position: "absolute",
-    top: "34.81%",
-    left: "87.5%",
+    // top: "34.81%",
+    // left: "87.5%",
     width: "100%",
     pointerEvents: "none",
+
+    top: "clamp(0px,34.81vh,376px)",
+    left: "clamp(0px,310.83vh,3357px)",
   };
 });
 

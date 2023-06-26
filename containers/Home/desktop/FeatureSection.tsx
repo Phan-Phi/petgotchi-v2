@@ -19,7 +19,7 @@ const FeatureSection = ({
       <Background onLoad={onLoad} src={"/feature-bg-desktop.jpg"} alt="How To" />
 
       <ContentWrapper>
-        <StyledGrid className="asdasdad">
+        <StyledGrid>
           <Box gridColumn="1" gridRow="1">
             <GlassmorphismCard>
               <Box
@@ -154,14 +154,24 @@ const FeatureSection = ({
 const ContentWrapper = styled(Box)(({ theme }) => {
   return {
     position: "absolute",
-    left: "30%",
-    top: "14%",
-    width: "66.18%",
-    height: "77.22%",
+    // left: "30%",
+    // top: "14%",
+    // width: "66.18%",
+    // height: "77.22%",
+
+    left: "clamp(0px,70.37vh,760px)",
+    top: "clamp(0px,15.27vh,165px)",
+    width: "clamp(0px,150.18vh,1622px)",
+    height: "clamp(0px,72.22vh,834px)",
 
     [theme.breakpoints.between("md", "lg")]: {
-      width: "63%",
-      left: "33%",
+      left: "clamp(0px,78.70vh,850px)",
+      top: "clamp(0px,21.29vh,230px)",
+      // position: "fixed",
+      // top: "65%",
+      // transform: "translateY(-65%)",
+      // left: "50%",
+      // transform: "translateX(-50%)",
     },
   };
 });
@@ -170,10 +180,12 @@ const StyledGrid = styled(Box)(({ theme }) => {
   return {
     display: "grid",
     gridTemplateColumns: "50% 40%",
-    gap: "2rem",
+    // gap: "2rem",
+    gap: "clamp(0px,3.14vh,34px)",
 
     [theme.breakpoints.between("md", "lg")]: {
       gap: "clamp(0px,1.48vh,16px)",
+      gridTemplateColumns: "45% 35%",
     },
   };
 });

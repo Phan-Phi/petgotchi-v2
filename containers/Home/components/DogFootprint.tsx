@@ -15,8 +15,11 @@ const DogFootprint = () => {
 
 const StyledBox = styled(Box)(({ theme }) => {
   return {
-    width: 40,
-    height: 40,
+    // width: 40,
+    // height: 40,
+
+    width: "clamp(0px,4.44vh,48px)",
+    height: "clamp(0px,4.44vh,48px)",
     [theme.breakpoints.down("md")]: {
       width: 32,
       height: 32,

@@ -60,10 +60,16 @@ const Wrapper = styled(Box)(() => {
 const TitleWrapper = styled(Box)(() => {
   return {
     position: "absolute",
-    left: "26.51%",
-    top: "18.98%",
-    width: "48.75%",
-    height: "9.26%",
+    // left: "26.51%",
+    // top: "18.98%",
+    // width: "48.75%",
+    // height: "9.26%",
+
+    left: " 50%",
+    transform: "translateX(-50%)",
+    top: "clamp(0px,18.98vh,205px)",
+    width: "clamp(0px,89.16vh,963px)",
+    height: "clamp(0px,9.25vh,100px)",
   };
 });
 
