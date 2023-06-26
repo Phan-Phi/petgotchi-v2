@@ -55,8 +55,8 @@ const theme = createTheme({
         lineHeight: "clamp(1rem, 2.59vh, 28px)",
       },
       [defaultTheme.breakpoints.down(900)]: {
-        fontSize: "clamp(1rem, 2.22vh, 24px)",
-        lineHeight: "clamp(1rem, 2.22vh, 24px)",
+        fontSize: "clamp(1rem, 4.81vh, 52px)",
+        lineHeight: "clamp(1rem, 4.81vh, 52px)",
       },
     },
   },
